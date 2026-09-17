@@ -16,3 +16,10 @@ void loop(){
         println("Detected nothing");
     }
 }
+
+// TODO for Tasmina:
+// Implement the seconds variable functionality for it must:
+//1. Represent the real world seconds once the arduino starts/
+//count the seconds from when the arduino starts
+//2. Once the seconds reach 60 seconds, the RPM variable stops counting upwards,
+//since it is the RPM measurement in the minute
