@@ -1,0 +1,10 @@
+Several assumptions first:
+1. Devices have been set up
+2. Setup for sensors has been done
+
+Create variable RPM = 0
+
+IF Sensor senses fan rotating THEN
+    RPM = RPM + 1
+
+Display RPM
