@@ -17,7 +17,7 @@ void loop(){
     }
 }
 
-// TODO for Tasmina:
+// TODO for Tasmnia:
 // Implement the seconds variable functionality for it must:
 //1. Represent the real world seconds once the arduino starts/
 //count the seconds from when the arduino starts
