@@ -14,19 +14,33 @@ void setup() {
   previousState = digitalRead(IRsensor);
 }
 
-void loop(){
-    int IRsensorState = digitalRead(IRsensor);
-    if(IRsensorState == LOW){
-        RPM = RPM + 1;
-        Serial.println(RPM);
-    } else if(IRsensorState == HIGH){
-        Serial.println("Detected nothing");
-    }
-}
+void loop() {
 
-// TODO for Tasmnia:
-// Implement the seconds variable functionality for it must:
-//1. Represent the real world seconds once the arduino starts/
-//count the seconds from when the arduino starts
-//2. Once the seconds reach 60 seconds, the RPM variable stops counting upwards,
-//since it is the RPM measurement in the minute
+  // Count seconds since Arduino starts
+  seconds = millis() / 1000;
+
+  // Read IR sensor
+  int IRsensorState = digitalRead(IRsensor);
+
+  // Count rotations for the first 60 seconds
+  if (seconds < 60) {
+
+    if (IRsensorState == LOW &&
+        previousState == HIGH) {
+
+      RPM = RPM + 1;
+      Serial.println(RPM);
+    }
+  }
+
+  previousState = IRsensorState;
+
+  // Display final RPM once after 60 seconds
+  if (seconds >= 60 && !finished) {
+
+    Serial.print("Final RPM: ");
+    Serial.println(RPM);
+
+    finished = true;
+  }
+}
