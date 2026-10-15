@@ -39,7 +39,7 @@ void loop() {
   if (seconds >= 60 && !finished) {
 
     Serial.print("Final RPM: ");
-    Serial.println(RPM);
+    Serial.println(RPM/3);
 
     finished = true;
   }
