@@ -1,15 +1,14 @@
-
-const int IRsensor = 7;
+const int IRsensor = 6;
 
 unsigned long seconds = 0;
-int RPM = 0;
+float RPM_count = 0;
 
 int previousState = HIGH;
 bool finished = false;
 
 void setup() {
   pinMode(IRsensor, INPUT);
-  Serial.begin(9600);
+  Serial.begin(230400);
 
   previousState = digitalRead(IRsensor);
 }
@@ -28,8 +27,8 @@ void loop() {
     if (IRsensorState == LOW &&
         previousState == HIGH) {
 
-      RPM = RPM + 1;
-      Serial.println(RPM);
+      RPM_count = RPM_count + 1;
+      Serial.println(RPM_count);
     }
   }
 
@@ -39,7 +38,7 @@ void loop() {
   if (seconds >= 60 && !finished) {
 
     Serial.print("Final RPM: ");
-    Serial.println(RPM/3);
+    Serial.println(RPM_count/3);
 
     finished = true;
   }
