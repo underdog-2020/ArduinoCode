@@ -1,7 +1,7 @@
 const int IRsensor = 6;
 
 unsigned long seconds = 0;
-float RPM_count = 0;
+float RPM = 0;
 
 int previousState = HIGH;
 bool finished = false;
@@ -27,8 +27,8 @@ void loop() {
     if (IRsensorState == LOW &&
         previousState == HIGH) {
 
-      RPM_count = RPM_count + 1;
-      Serial.println(RPM_count);
+      RPM = RPM + 1;
+      Serial.println(RPM);
     }
   }
 
@@ -38,11 +38,7 @@ void loop() {
   if (seconds >= 60 && !finished) {
 
     Serial.print("Final RPM: ");
-<<<<<<< HEAD
     Serial.println(RPM/3);
-=======
-    Serial.println(RPM_count/3);
->>>>>>> 1344a974fbe565aae9ffa52efe3c668fcc391df5
 
     finished = true;
   }
