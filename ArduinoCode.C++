@@ -9,7 +9,7 @@ bool finished = false;
 
 void setup() {
   pinMode(IRsensor, INPUT);
-  Serial.begin(9600);
+  Serial.begin(230400);
 
   previousState = digitalRead(IRsensor);
 }
@@ -39,7 +39,7 @@ void loop() {
   if (seconds >= 60 && !finished) {
 
     Serial.print("Final RPM: ");
-    Serial.println(RPM);
+    Serial.println(RPM/3);
 
     finished = true;
   }
